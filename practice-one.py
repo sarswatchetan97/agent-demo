@@ -1,4 +1,5 @@
 import enum
+import json
 from tkinter import scrolledtext
 
 
@@ -76,3 +77,60 @@ for word in spam_words:
 
 ranked = sorted(scores, reverse=True)
 print(f"Ranked - {ranked}")
+
+#Dictionary
+model_scores = {"GPT": 0.95, "BERT": 0.88, "LLaMA": 0.91}
+
+for model in model_scores:
+    print(model)
+
+for model_score in model_scores.values():
+    print(model_score) 
+
+for model, model_score in model_scores.items():
+    print(f"{model} - {model_score}")
+
+#Nested Dictionary
+ai_models = {
+    "gpt4": {
+        "company":"OpenAI",
+        "params": "1.7T",
+        "type": "LLM"
+    },
+    "claude": {
+        "company": "Anthropic",
+        "params": "Unknown",
+        "type": "LLM"
+    }
+}
+
+print(ai_models["gpt4"]["params"])
+print(ai_models["claude"]["type"])
+
+squares = {x: x**2 for x in range(5)}
+print(squares)
+
+squares = {}
+for x in range(5):
+    squares[x] = x**2
+print(squares)
+
+cubes = {x: x**3 for x in range(10)}
+print(cubes)
+
+names = ["cat", "dog", "bird"]
+scores = [0.95, 0.88, 0.72]
+
+predictions = {name: score for name, score in zip(names, scores)}
+print(predictions)
+
+#JSON
+
+# Dictionary → JSON string
+data = {"model": "GPT-4", "accuracy": 0.95}
+json_string = json.dumps(data)
+print(json_string)
+
+#JSON string → Dictionary
+result = json.loads(json_string)
+print(result)
